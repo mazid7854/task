@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const NavBar = () => {
   const [healthStatus, setHealthStatus] = useState("");
   console.log(healthStatus);
+  const baseUrl = process.env.backend_base_url;
 
   useEffect(() => {
     axios
@@ -14,17 +15,14 @@ const NavBar = () => {
   return (
     <nav className="p-4 bg-gray-800 text-white flex justify-between items-center m-auto">
       <h1>My Application</h1>
-      <ul className="flex space-x-4 items-center justify-between">
+      <ul className="flex space-x-4">
         <li>
-          <Link>
-            health{" "}
-            <span
-              className={`animate-pulse ${
-                healthStatus === "healthy" ? "text-green-500" : "text-red-500"
-              } text-5xl`}
-            >
-              •
-            </span>
+          <Link
+            className={`animate-pulse ${
+              healthStatus === "healthy" ? "text-green-500" : "text-red-500"
+            } `}
+          >
+            health
           </Link>
         </li>
         <li>
